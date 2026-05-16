@@ -1,0 +1,436 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- ======================== Breadcrumb Section Start ===================== -->
+<section class="breadcrumb breadcrumb-one padding-y-60 section-bg position-relative z-index-1 overflow-hidden">
+    <img src="{% static 'assets/images/gradients/breadcrumb-gradient-bg.png' %}" alt="" class="bg--gradient">
+    <img src="{% static 'assets/images/shapes/element-moon3.png' %}" alt="" class="element one">
+    <img src="{% static 'assets/images/shapes/element-moon1.png' %}" alt="" class="element three">
+    <div class="container container-two">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="breadcrumb-one-content">
+                    <h3 class="breadcrumb-one-content__title text-center mb-3 text-capitalize">
+                        {% if active_category %}
+                            {{ active_category_name }} mahsulotlari
+                        {% else %}
+                            58,000+ products available for purchase
+                        {% endif %}
+                    </h3>
+                    <p class="breadcrumb-one-content__desc text-center text-black-three">
+                        Explore the best premium themes and plugins available for sale.
+                        Our unique collection is hand-curated by experts.
+                        Find and buy the perfect premium theme.
+                    </p>
+                    <form action="#" class="search-box">
+                        <input type="text" class="common-input common-input--lg pill shadow-sm" placeholder="Search theme, plugins &amp; more...">
+                        <button type="submit" class="btn btn-main btn-icon icon border-0">
+                            <img src="{% static 'assets/images/icons/search.svg' %}" alt="">
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ======================== Breadcrumb Section End ===================== -->
+
+<!-- ======================== All Product Section Start ====================== -->
+<section class="all-product padding-y-120">
+    <div class="container container-two">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <!-- ===== Filter Tab (Category + Sort) ===== -->
+                <div class="filter-tab gap-3 flx-between">
+                    <button type="button" class="filter-tab__button btn btn-outline-light pill d-flex align-items-center">
+                        <span class="icon icon-left"><img src="{% static 'assets/images/icons/filter.svg' %}" alt=""></span>
+                        <span class="font-18 fw-500">Filters</span>
+                    </button>
+
+                    <ul class="nav common-tab nav-pills mb-0 gap-lg-2 gap-1 ms-lg-auto" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a href="{% url 'index' %}"
+                               class="nav-link {% if not active_category %}active{% endif %}">
+                                All Item
+                            </a>
+                        </li>
+                        {% for cat in top_categories %}
+                        <li class="nav-item" role="presentation">
+                            <a href="{% url 'index_by_category' cat.id %}"
+                               class="nav-link {% if active_category == cat.id %}active{% endif %}">
+                                {{ cat.name }}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+
+                    <div class="list-grid d-flex align-items-center gap-2">
+                        <button class="list-grid__button list-button d-sm-flex d-none text-body"><i class="las la-list"></i></button>
+                        <button class="list-grid__button grid-button d-sm-flex d-none active text-body"><i class="las la-border-all"></i></button>
+                        <button class="list-grid__button sidebar-btn text-body d-lg-none d-flex"><i class="las la-bars"></i></button>
+                    </div>
+                </div>
+
+                <!-- ===== Filter Form ===== -->
+                <form action="#" class="filter-form pb-4">
+                    <div class="row gy-3">
+                        <div class="col-sm-4 col-xs-6">
+                            <div class="flx-between gap-1">
+                                <label for="tag" class="form-label font-16">Tag</label>
+                                <button type="reset" class="text-body font-14">Clear</button>
+                            </div>
+                            <div class="position-relative">
+                                <input type="text" class="common-input border-gray-five common-input--withLeftIcon" id="tag" placeholder="Search By Tag...">
+                                <span class="input-icon input-icon--left"><img src="{% static 'assets/images/icons/search-two.svg' %}" alt=""></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-xs-6">
+                            <div class="flx-between gap-1">
+                                <label for="Price" class="form-label font-16">Price</label>
+                                <button type="reset" class="text-body font-14">Clear</button>
+                            </div>
+                            <div class="position-relative">
+                                <input type="text" class="common-input border-gray-five" id="Price" placeholder="$7 - $29">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="flx-between gap-1">
+                                <label for="time" class="form-label font-16">Time Frame</label>
+                                <button type="reset" class="text-body font-14">Clear</button>
+                            </div>
+                            <div class="position-relative select-has-icon">
+                                <select id="time" class="common-input border-gray-five">
+                                    <option value="1">Now</option>
+                                    <option value="2">Yesterday</option>
+                                    <option value="3">1 Month Ago</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+            <!-- ===== Left Sidebar ===== -->
+            <div class="col-xl-3 col-lg-4">
+                <div class="filter-sidebar">
+                    <button type="button" class="filter-sidebar__close p-2 position-absolute end-0 top-0 z-index-1 text-body hover-text-main font-20 d-lg-none d-block">
+                        <i class="las la-times"></i>
+                    </button>
+
+                    <div class="filter-sidebar__item">
+                        <button type="button" class="filter-sidebar__button font-16 text-capitalize fw-500">Category</button>
+                        <div class="filter-sidebar__content">
+                            <ul class="filter-sidebar-list">
+                                <li class="filter-sidebar-list__item">
+                                    <a href="{% url 'index' %}"
+                                       class="filter-sidebar-list__text {% if not active_category %}fw-bold{% endif %}">
+                                        All Categories
+                                        <span class="qty">{{ total_products }}</span>
+                                    </a>
+                                </li>
+                                {% for cat in categories %}
+                                <li class="filter-sidebar-list__item">
+                                    <a href="{% url 'index_by_category' cat.id %}"
+                                       class="filter-sidebar-list__text {% if active_category == cat.id %}fw-bold{% endif %}">
+                                        {{ cat.name }}
+                                        <span class="qty">{{ cat.product_set.count }}</span>
+                                    </a>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="filter-sidebar__item">
+                        <button type="button" class="filter-sidebar__button font-16 text-capitalize fw-500">Rating</button>
+                        <div class="filter-sidebar__content">
+                            <ul class="filter-sidebar-list">
+                                <li class="filter-sidebar-list__item">
+                                    <div class="filter-sidebar-list__text">
+                                        <div class="common-check common-radio">
+                                            <input class="form-check-input" type="radio" name="rating" id="veiwAll" checked>
+                                            <label class="form-check-label" for="veiwAll"> View All</label>
+                                        </div>
+                                        <span class="qty">(1859)</span>
+                                    </div>
+                                </li>
+                                <li class="filter-sidebar-list__item">
+                                    <div class="filter-sidebar-list__text">
+                                        <div class="common-check common-radio">
+                                            <input class="form-check-input" type="radio" name="rating" id="oneStar">
+                                            <label class="form-check-label" for="oneStar"> 1 Star and above</label>
+                                        </div>
+                                        <span class="qty">(785)</span>
+                                    </div>
+                                </li>
+                                <li class="filter-sidebar-list__item">
+                                    <div class="filter-sidebar-list__text">
+                                        <div class="common-check common-radio">
+                                            <input class="form-check-input" type="radio" name="rating" id="twoStar">
+                                            <label class="form-check-label" for="twoStar"> 2 Star and above</label>
+                                        </div>
+                                        <span class="qty">(1250)</span>
+                                    </div>
+                                </li>
+                                <li class="filter-sidebar-list__item">
+                                    <div class="filter-sidebar-list__text">
+                                        <div class="common-check common-radio">
+                                            <input class="form-check-input" type="radio" name="rating" id="threeStar">
+                                            <label class="form-check-label" for="threeStar"> 3 Star and above</label>
+                                        </div>
+                                        <span class="qty">(7580)</span>
+                                    </div>
+                                </li>
+                                <li class="filter-sidebar-list__item">
+                                    <div class="filter-sidebar-list__text">
+                                        <div class="common-check common-radio">
+                                            <input class="form-check-input" type="radio" name="rating" id="fourStar">
+                                            <label class="form-check-label" for="fourStar"> 4 Star and above</label>
+                                        </div>
+                                        <span class="qty">(1450)</span>
+                                    </div>
+                                </li>
+                                <li class="filter-sidebar-list__item">
+                                    <div class="filter-sidebar-list__text">
+                                        <div class="common-check common-radio">
+                                            <input class="form-check-input" type="radio" name="rating" id="fiveStar">
+                                            <label class="form-check-label" for="fiveStar"> 5 Star Rating</label>
+                                        </div>
+                                        <span class="qty">(2530)</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="filter-sidebar__item">
+                        <button type="button" class="filter-sidebar__button font-16 text-capitalize fw-500">Date Updated</button>
+                        <div class="filter-sidebar__content">
+                            <ul class="filter-sidebar-list">
+                                <li class="filter-sidebar-list__item">
+                                    <div class="filter-sidebar-list__text">
+                                        <div class="common-check common-radio">
+                                            <input class="form-check-input" type="radio" name="dateFilter" id="anyDate" checked>
+                                            <label class="form-check-label" for="anyDate"> Any Date</label>
+                                        </div>
+                                        <span class="qty">5,203</span>
+                                    </div>
+                                </li>
+                                <li class="filter-sidebar-list__item">
+                                    <div class="filter-sidebar-list__text">
+                                        <div class="common-check common-radio">
+                                            <input class="form-check-input" type="radio" name="dateFilter" id="lastYear">
+                                            <label class="form-check-label" for="lastYear"> In the last year</label>
+                                        </div>
+                                        <span class="qty">1,258</span>
+                                    </div>
+                                </li>
+                                <li class="filter-sidebar-list__item">
+                                    <div class="filter-sidebar-list__text">
+                                        <div class="common-check common-radio">
+                                            <input class="form-check-input" type="radio" name="dateFilter" id="lastMonth">
+                                            <label class="form-check-label" for="lastMonth"> In the last month</label>
+                                        </div>
+                                        <span class="qty">2,450</span>
+                                    </div>
+                                </li>
+                                <li class="filter-sidebar-list__item">
+                                    <div class="filter-sidebar-list__text">
+                                        <div class="common-check common-radio">
+                                            <input class="form-check-input" type="radio" name="dateFilter" id="lastWeek">
+                                            <label class="form-check-label" for="lastWeek"> In the last week</label>
+                                        </div>
+                                        <span class="qty">325</span>
+                                    </div>
+                                </li>
+                                <li class="filter-sidebar-list__item">
+                                    <div class="filter-sidebar-list__text">
+                                        <div class="common-check common-radio">
+                                            <input class="form-check-input" type="radio" name="dateFilter" id="lastDay">
+                                            <label class="form-check-label" for="lastDay"> In the last day</label>
+                                        </div>
+                                        <span class="qty">745</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ===== Left Sidebar End ===== -->
+
+            <!-- ===== Products Grid ===== -->
+            <div class="col-xl-9 col-lg-8">
+                <div class="row gy-4 list-grid-wrapper">
+                    {% for product in products %}
+                    <div class="col-xl-4 col-sm-6">
+                        <div class="product-card section-bg">
+                            <div class="product-card__thumb d-flex">
+                                <a href="{% url 'product_detail' product.code %}" class="link w-100">
+                                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="cover-img">
+                                </a>
+                                <button type="button" class="product-card__wishlist"><i class="fas fa-heart"></i></button>
+                            </div>
+                            <div class="product-card__content">
+                                <h6 class="product-card__title">
+                                    <a href="{% url 'product_detail' product.code %}" class="link">{{ product.name }}</a>
+                                </h6>
+                                <div class="product-card__info flx-between gap-2">
+                                    <span class="product-card__author">
+                                        by
+                                        <a href="{% url 'category_filter' product.category.id %}"
+                                           class="link hover-text-decoration-underline"> {{ product.category.name }}</a>
+                                    </span>
+                                    <div class="flx-align gap-2">
+                                        <h6 class="product-card__price mb-0">${{ product.price }}</h6>
+                                        {% if product.discount_status and product.discount_price %}
+                                        <span class="product-card__prevPrice text-decoration-line-through">${{ product.discount_price }}</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="product-card__bottom flx-between gap-2">
+                                    <div>
+                                        <span class="product-card__sales font-14 mb-2">{{ product.count }} Sales</span>
+                                        <div class="d-flex align-items-center gap-1">
+                                            <ul class="star-rating">
+                                                <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                                <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                                <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                                <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                                <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <a href="{% url 'product_detail' product.code %}"
+                                       class="btn btn-outline-light btn-sm pill">Ko'rish</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="col-12 text-center py-5">
+                        <p class="text-muted font-18">
+                            {% if active_category %}
+                                Bu kategoriyada hozircha mahsulotlar yo'q.
+                            {% else %}
+                                Hozircha mahsulotlar yo'q.
+                            {% endif %}
+                        </p>
+                        <a href="{% url 'index' %}" class="btn btn-main pill mt-3">Barcha mahsulotlar</a>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                {% if products %}
+                <nav aria-label="Page navigation" class="mt-4">
+                    <ul class="pagination common-pagination">
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        <li class="page-item">
+                            <a class="page-link flx-align gap-2 flex-nowrap" href="#">Next
+                                <span class="icon line-height-1 font-20"><i class="las la-arrow-right"></i></span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                {% endif %}
+            </div>
+            <!-- ===== Products Grid End ===== -->
+
+        </div>
+    </div>
+</section>
+<!-- ======================== All Product Section End ====================== -->
+
+<!-- ========================= Free Resources Section =========================== -->
+<section class="resource style-two padding-y-120 section-bg position-relative z-index-1 overflow-hidden">
+    <img src="{% static 'assets/images/shapes/element-moon1.png' %}" alt="" class="element one">
+    <div class="container container-two">
+        <div class="section-heading style-left style-flex flx-between align-items-end gap-3">
+            <div class="section-heading__inner w-lg">
+                <h3 class="section-heading__title">Free Resources</h3>
+                <p class="section-heading__desc">Every month we pick some best products for you. This month's best web themes &amp; templates have arrived, chosen by our content specialists.</p>
+            </div>
+            <a href="{% url 'index' %}" class="btn btn-main btn-lg pill">View All Items</a>
+        </div>
+        <div class="resource-slider gy-4">
+            {% for product in free_products %}
+            <div class="product-card shadow-sm">
+                <div class="product-card__thumb d-flex">
+                    <a href="{% url 'product_detail' product.code %}" class="link w-100">
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="cover-img">
+                    </a>
+                    <button type="button" class="product-card__wishlist"><i class="fas fa-heart"></i></button>
+                </div>
+                <div class="product-card__content">
+                    <h6 class="product-card__title">
+                        <a href="{% url 'product_detail' product.code %}" class="link">{{ product.name }}</a>
+                    </h6>
+                    <div class="product-card__info flx-between gap-2">
+                        <span class="product-card__author">
+                            by
+                            <a href="{% url 'index_by_category' product.category.id %}"
+                               class="link hover-text-decoration-underline"> {{ product.category.name }}</a>
+                        </span>
+                        <div class="flx-align gap-2">
+                            <h6 class="product-card__price mb-0">${{ product.price }}</h6>
+                            {% if product.discount_status and product.discount_price %}
+                            <span class="product-card__prevPrice text-decoration-line-through">${{ product.discount_price }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="product-card__bottom flx-between gap-2">
+                        <div>
+                            <span class="product-card__sales font-14 mb-2">{{ product.count }} Sales</span>
+                            <div class="d-flex align-items-center gap-1">
+                                <ul class="star-rating">
+                                    <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                    <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                    <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                    <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                    <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <a href="{% url 'product_detail' product.code %}" class="btn btn-outline-light btn-sm pill">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- ========================= Free Resources Section End =========================== -->
+
+<!-- ======================== Brand Section ========================= -->
+<div class="brand">
+    <div class="container container">
+        <div class="brand-slider">
+            <div class="brand-item d-flex align-items-center justify-content-center">
+                <img src="{% static 'assets/images/thumbs/brand-img1.png' %}" alt="">
+            </div>
+            <div class="brand-item d-flex align-items-center justify-content-center">
+                <img src="{% static 'assets/images/thumbs/brand-img2.png' %}" alt="">
+            </div>
+            <div class="brand-item d-flex align-items-center justify-content-center">
+                <img src="{% static 'assets/images/thumbs/brand-img3.png' %}" alt="">
+            </div>
+            <div class="brand-item d-flex align-items-center justify-content-center">
+                <img src="{% static 'assets/images/thumbs/brand-img4.png' %}" alt="">
+            </div>
+            <div class="brand-item d-flex align-items-center justify-content-center">
+                <img src="{% static 'assets/images/thumbs/brand-img5.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ======================== Brand Section End ========================= -->
+
+{% endblock %}

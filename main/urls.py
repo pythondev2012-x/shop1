@@ -4,6 +4,8 @@ urlpatterns = [
     path('',views.index,name='index'),
     path('product-detail/<str:code>/', views.product_detail, name='product_detail'),
     path('register/', views.register, name='register'),
-    path('login/', views.login_page, name='login'),
-    path('logout/', views.logout_page, name='logout'),
+    path('login/', views.log_in, name='login'),
+    path('logout/', views.log_out, name='logout'),
+    path('profile/', views.profile, name='profile'),
+    path('category-filter/<int:category_id>/', views.category_filter, name='category_filter'),
 ]

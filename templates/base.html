@@ -5,310 +5,411 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Market Place</title>
+    <!-- Title -->
+    <title> Digital Market Place HTML Template</title>
+    <!-- Favicon -->
     <link rel="shortcut icon" href="{% static 'assets/images/logo/favicon-two.png' %}">
+
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <!-- Fontawesome -->
     <link rel="stylesheet" href="{% static 'assets/css/fontawesome-all.min.css' %}">
+    <!-- Slick -->
     <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+    <!-- magnific popup -->
     <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+    <!-- line awesome -->
     <link rel="stylesheet" href="{% static 'assets/css/line-awesome.min.css' %}">
+    <!-- Main css -->
     <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+
 </head>
 <body>
 
 <!--==================== Preloader Start ====================-->
-<div class="loader-mask">
-    <div class="loader">
-        <div></div>
-        <div></div>
-    </div>
+ <div class="loader-mask">
+  <div class="loader">
+      <div></div>
+      <div></div>
+  </div>
 </div>
 <!--==================== Preloader End ====================-->
 
+<!--==================== Overlay Start ====================-->
 <div class="overlay"></div>
+<!--==================== Overlay End ====================-->
+
+<!--==================== Sidebar Overlay End ====================-->
 <div class="side-overlay"></div>
+<!--==================== Sidebar Overlay End ====================-->
 
-<!-- ==================== Scroll to Top ==================== -->
+<!-- ==================== Scroll to Top End Here ==================== -->
 <div class="progress-wrap">
-    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-    </svg>
+  <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+      <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+  </svg>
 </div>
-<!-- ==================== Scroll to Top End ==================== -->
+<!-- ==================== Scroll to Top End Here ==================== -->
 
-<!-- ==================== Mobile Menu ==================== -->
+<!-- ==================== Mobile Menu Start Here ==================== -->
 <div class="mobile-menu d-lg-none d-block">
     <button type="button" class="close-button"> <i class="las la-times"></i> </button>
     <div class="mobile-menu__inner">
-        <a href="{% url 'index' %}" class="mobile-menu__logo">
+        <a href="index.html" class="mobile-menu__logo">
             <img src="{% static 'assets/images/logo/logo.png' %}" alt="Logo">
         </a>
         <div class="mobile-menu__menu">
 
-            <ul class="nav-menu flx-align nav-menu--mobile">
-                <li class="nav-menu__item">
-                    <a href="{% url 'index' %}" class="nav-menu__link">Home</a>
-                </li>
-                <li class="nav-menu__item">
-                    <a href="{% url 'index' %}" class="nav-menu__link">Products</a>
-                </li>
-                <li class="nav-menu__item">
-                    <a href="#" class="nav-menu__link">Contact</a>
-                </li>
-            </ul>
-
+<ul class="nav-menu flx-align nav-menu--mobile">
+    <li class="nav-menu__item has-submenu">
+        <a href="javascript:void(0)" class="nav-menu__link">Home</a>
+        <ul class="nav-submenu">
+            <li class="nav-submenu__item">
+                <a href="{% url 'index' %}" class="nav-submenu__link"> Home One</a>
+            </li>
+            <li class="nav-submenu__item">
+                <a href="{% url 'index' %}" class="nav-submenu__link"> Home Two</a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-menu__item has-submenu">
+        <a href="javascript:void(0)" class="nav-menu__link">Products</a>
+         <ul class="nav-submenu">
+            <li class="nav-submenu__item">
+                <a href="all-product.html" class="nav-submenu__link"> All Products</a>
+            </li>
+            <li class="nav-submenu__item">
+                <a href="product-details.html" class="nav-submenu__link"> Product Details</a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-menu__item has-submenu">
+        <a href="javascript:void(0)" class="nav-menu__link">Pages</a>
+         <ul class="nav-submenu">
+            <li class="nav-submenu__item">
+                <a href="{% url 'profile' %}" class="nav-submenu__link"> Profile</a>
+            </li>
+            <li class="nav-submenu__item">
+                <a href="cart.html" class="nav-submenu__link"> Shopping Cart</a>
+            </li>
+            <li class="nav-submenu__item">
+                <a href="cart-personal.html" class="nav-submenu__link"> Mailing Address</a>
+            </li>
+            <li class="nav-submenu__item">
+                <a href="cart-payment.html" class="nav-submenu__link"> Payment Method</a>
+            </li>
+            <li class="nav-submenu__item">
+                <a href="cart-thank-you.html" class="nav-submenu__link"> Preview Order</a>
+            </li>
+            <li class="nav-submenu__item">
+                <a href="dashboard.html" class="nav-submenu__link"> Dashboard</a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-menu__item has-submenu">
+        <a href="javascript:void(0)" class="nav-menu__link">Blog</a>
+         <ul class="nav-submenu">
+            <li class="nav-submenu__item">
+                <a href="blog.html" class="nav-submenu__link"> Blog</a>
+            </li>
+            <li class="nav-submenu__item">
+                <a href="blog-details.html" class="nav-submenu__link"> Blog Details</a>
+            </li>
+            <li class="nav-submenu__item">
+                <a href="blog-details-sidebar.html" class="nav-submenu__link"> Blog Details Sidebar</a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-menu__item">
+        <a href="contact.html" class="nav-menu__link">Contact</a>
+    </li>
+</ul>
             <div class="header-right__inner d-lg-none my-3 gap-1 d-flex flx-align">
-                {% if request.user.is_authenticated %}
-                    <span class="fw-600 font-14 text-heading">
-                        <i class="las la-user"></i> {{ request.user.username }}
-                    </span>
-                    <a href="{% url 'logout' %}" class="btn btn-outline-danger pill font-14">
-                        <i class="las la-sign-out-alt"></i> Logout
+
+                {% if user.is_authenticated %}
+                    <a href="{% url 'profile' %}" class="btn btn-main pill">
+                        <span class="icon-left icon">
+                            <img src="{% static 'assets/images/icons/user.svg' %}" alt="">
+                        </span>{{ user.username }}
                     </a>
+                    <a href="{% url 'logout' %}" class="btn btn-outline-light pill">Logout</a>
                 {% else %}
                     <a href="{% url 'login' %}" class="btn btn-main pill">
                         <span class="icon-left icon">
                             <img src="{% static 'assets/images/icons/user.svg' %}" alt="">
-                        </span>
-                        Login
-                    </a>
-                    <a href="{% url 'register' %}" class="btn btn-outline-light pill font-14">
-                        Register
+                        </span>Login
                     </a>
                 {% endif %}
 
-                <div class="language-select flx-align select-has-icon">
-                    <img src="{% static 'assets/images/icons/globe.svg' %}" alt="" class="globe-icon">
-                    <select class="select py-0 ps-2 border-0 fw-500">
-                        <option value="1">Eng</option>
-                        <option value="2">Bn</option>
-                        <option value="3">Eur</option>
-                        <option value="4">Urd</option>
-                    </select>
-                </div>
+    <div class="language-select flx-align select-has-icon">
+        <img src="{% static 'assets/images/icons/globe.svg' %}" alt="" class="globe-icon">
+        <select class="select py-0 ps-2 border-0 fw-500">
+            <option value="1">Eng</option>
+            <option value="2">Bn</option>
+            <option value="3">Eur</option>
+            <option value="4">Urd</option>
+        </select>
+    </div>
             </div>
-
         </div>
     </div>
 </div>
-<!-- ==================== Mobile Menu End ==================== -->
+<!-- ==================== Mobile Menu End Here ==================== -->
 
 <main class="change-gradient">
+    <!-- ============================ Sale Offer Start =========================== -->
+<div class="sale-offer ">
+    <div class="container container-full ">
+        <div class="sale-offer__content flx-between position-relative">
+            <div class="sale-offer__countdown">
 
-    <!-- ==================== Sale Offer ==================== -->
-    <div class="sale-offer">
-        <div class="container container-full">
-            <div class="sale-offer__content flx-between position-relative">
-                <div class="sale-offer__countdown">
-                    <div class="countdown" data-date="14-10-2026" data-time="12:00">
-                        <div class="day"><span class="num"></span><span class="word"></span></div>
-                        <div class="hour"><span class="num"></span><span class="word"></span></div>
-                        <div class="min"><span class="num"></span><span class="word"></span></div>
-                        <div class="sec"><span class="num"></span><span class="word"></span></div>
-                    </div>
+                <div class="countdown" data-date="14-10-2026" data-time="12:00">
+                    <div class="day"><span class="num"></span><span class="word"></span></div>
+                    <div class="hour"><span class="num"></span><span class="word"></span></div>
+                    <div class="min"><span class="num"></span><span class="word"></span></div>
+                    <div class="sec"><span class="num"></span><span class="word"></span></div>
                 </div>
-                <div class="sale-offer__discount flx-align gap-2">
-                    <span class="sale-offer__text text-heading text-capitalize">New Year Flash Sale Offer</span>
-                    <strong class="sale-offer__qty text-heading font-heading">45% OFF</strong>
-                    <a href="#" class="btn btn-sm btn-white pill fw-500">Shop Now</a>
-                </div>
-                <div class="sale-offer__button">
-                    <button type="button" class="sale-offer__close text-heading"><i class="las la-times"></i></button>
-                </div>
+
+            </div>
+            <div class="sale-offer__discount flx-align gap-2">
+                <span class="sale-offer__text text-heading text-capitalize">New Year Flash Sale Offer</span>
+                <strong class="sale-offer__qty text-heading font-heading">45% OFF</strong>
+                <a href="#" class="btn btn-sm btn-white pill fw-500">Shop Now</a>
+            </div>
+            <div class="sale-offer__button">
+                <button type="submit" class="sale-offer__close text-heading"><i class="las la-times"></i></button>
             </div>
         </div>
     </div>
-    <!-- ==================== Sale Offer End ==================== -->
+</div>
+<!-- ============================ Sale Offer End =========================== -->
+    <!-- ==================== Header Start Here ==================== -->
+<header class="header">
+    <div class="container container-full">
+        <nav class="header-inner flx-between">
+            <!-- Logo Start -->
+            <div class="logo">
+                <a href="index.html" class="link">
+                    <img src="{% static 'assets/images/logo/logo-two.png' %}" alt="Logo">
+                </a>
+            </div>
+            <!-- Logo End  -->
 
-    <!-- ==================== Header ==================== -->
-    <header class="header">
-        <div class="container container-full">
-            <nav class="header-inner flx-between">
+            <!-- Menu Start  -->
+            <div class="header-menu d-lg-block d-none">
 
-                <!-- Logo -->
-                <div class="logo">
-                    <a href="{% url 'index' %}" class="link">
-                        <img src="{% static 'assets/images/logo/logo-two.png' %}" alt="Logo">
-                    </a>
-                </div>
+<ul class="nav-menu flx-align ">
+    <li class="nav-menu__item has-submenu">
+        <a href="javascript:void(0)" class="nav-menu__link">Home</a>
+        <ul class="nav-submenu">
+            <li class="nav-submenu__item">
+                <a href="{% url 'index' %}" class="nav-submenu__link"> Home One</a>
+            </li>
+            <li class="nav-submenu__item">
+                <a href="{% url 'index' %}" class="nav-submenu__link"> Home Two</a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-menu__item has-submenu">
+        <a href="javascript:void(0)" class="nav-menu__link">Products</a>
+         <ul class="nav-submenu">
+            <li class="nav-submenu__item">
+                <a href="all-product.html" class="nav-submenu__link"> All Products</a>
+            </li>
+            <li class="nav-submenu__item">
+                <a href="product-details.html" class="nav-submenu__link"> Product Details</a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-menu__item has-submenu">
+        <a href="javascript:void(0)" class="nav-menu__link">Pages</a>
+         <ul class="nav-submenu">
+            <li class="nav-submenu__item">
+                <a href="{% url 'profile' %}" class="nav-submenu__link"> Profile</a>
+            </li>
+            <li class="nav-submenu__item">
+                <a href="cart.html" class="nav-submenu__link"> Shopping Cart</a>
+            </li>
+            <li class="nav-submenu__item">
+                <a href="cart-personal.html" class="nav-submenu__link"> Mailing Address</a>
+            </li>
+            <li class="nav-submenu__item">
+                <a href="cart-payment.html" class="nav-submenu__link"> Payment Method</a>
+            </li>
+            <li class="nav-submenu__item">
+                <a href="cart-thank-you.html" class="nav-submenu__link"> Preview Order</a>
+            </li>
+            <li class="nav-submenu__item">
+                <a href="dashboard.html" class="nav-submenu__link"> Dashboard</a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-menu__item has-submenu">
+        <a href="javascript:void(0)" class="nav-menu__link">Blog</a>
+         <ul class="nav-submenu">
+            <li class="nav-submenu__item">
+                <a href="blog.html" class="nav-submenu__link"> Blog</a>
+            </li>
+            <li class="nav-submenu__item">
+                <a href="blog-details.html" class="nav-submenu__link"> Blog Details</a>
+            </li>
+            <li class="nav-submenu__item">
+                <a href="blog-details-sidebar.html" class="nav-submenu__link"> Blog Details Sidebar</a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-menu__item">
+        <a href="contact.html" class="nav-menu__link">Contact</a>
+    </li>
+</ul>
+            </div>
+            <!-- Menu End  -->
 
-                <!-- Desktop Menu -->
-                <div class="header-menu d-lg-block d-none">
-                    <ul class="nav-menu flx-align">
-                        <li class="nav-menu__item">
-                            <a href="{% url 'index' %}" class="nav-menu__link">Home</a>
-                        </li>
-                        <li class="nav-menu__item">
-                            <a href="{% url 'index' %}" class="nav-menu__link">Products</a>
-                        </li>
-                        <li class="nav-menu__item">
-                            <a href="#" class="nav-menu__link">Contact</a>
-                        </li>
-                    </ul>
-                </div>
+            <!-- Header Right start -->
+            <div class="header-right flx-align">
+    <a href="cart.html" class="header-right__button cart-btn position-relative">
+        <img src="{% static 'assets/images/icons/cart.svg' %}" alt="">
+        <span class="qty-badge font-12">0</span>
+    </a>
+    <div class="header-right__inner gap-3 flx-align d-lg-flex d-none">
 
-                <!-- Header Right -->
-                <div class="header-right flx-align">
-                    <a href="#" class="header-right__button cart-btn position-relative">
-                        <img src="{% static 'assets/images/icons/cart.svg' %}" alt="">
-                        <span class="qty-badge font-12">0</span>
-                    </a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'profile' %}" class="btn btn-main pill">
+                <span class="icon-left icon">
+                    <img src="{% static 'assets/images/icons/user.svg' %}" alt="">
+                </span>{{ user.username }}
+            </a>
+            <a href="{% url 'logout' %}" class="btn btn-outline-light pill">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}" class="btn btn-main pill">
+                <span class="icon-left icon">
+                    <img src="{% static 'assets/images/icons/user.svg' %}" alt="">
+                </span>Login
+            </a>
+        {% endif %}
 
-                    <div class="header-right__inner gap-3 flx-align d-lg-flex d-none">
-                        {% if request.user.is_authenticated %}
-                            <span class="fw-600 font-14 text-heading">
-                                <i class="las la-user"></i> {{ request.user.username }}
-                            </span>
-                            <a href="{% url 'logout' %}" class="btn btn-main pill">
-                                <i class="las la-sign-out-alt"></i> Logout
-                            </a>
-                        {% else %}
-                            <a href="{% url 'login' %}" class="btn btn-main pill">
-                                <span class="icon-left icon">
-                                    <img src="{% static 'assets/images/icons/user.svg' %}" alt="">
-                                </span>
-                                Login
-                            </a>
-                            <a href="{% url 'register' %}" class="btn btn-outline-light pill font-14">
-                                Register
-                            </a>
-                        {% endif %}
+    <button type="button" class="toggle-mobileMenu d-lg-none"> <i class="las la-bars"></i> </button>
+</div>
+            <!-- Header Right End  -->
+        </nav>
+    </div>
+</header>
+<!-- ==================== Header End Here ==================== -->
 
-                        <div class="language-select flx-align select-has-icon">
-                            <img src="{% static 'assets/images/icons/globe.svg' %}" alt="" class="globe-icon">
-                            <select class="select py-0 ps-2 border-0 fw-500">
-                                <option value="1">Eng</option>
-                                <option value="2">Bn</option>
-                                <option value="3">Eur</option>
-                                <option value="4">Urd</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <button type="button" class="toggle-mobileMenu d-lg-none">
-                        <i class="las la-bars"></i>
-                    </button>
-                </div>
-
-            </nav>
-        </div>
-    </header>
-    <!-- ==================== Header End ==================== -->
 
     {% block content %}
     {% endblock %}
 
-    <!-- ==================== Footer ==================== -->
-    <footer class="footer">
-        <img src="{% static 'assets/images/shapes/pattern.png' %}" alt="" class="bg-pattern">
-        <img src="{% static 'assets/images/shapes/element1.png' %}" alt="" class="element one">
-        <img src="{% static 'assets/images/shapes/element2.png' %}" alt="" class="element two">
-        <img src="{% static 'assets/images/gradients/footer-gradient.png' %}" alt="" class="bg--gradient">
 
-        <div class="container container-two">
-            <div class="row gy-5">
-                <div class="col-xl-3 col-sm-6">
-                    <div class="footer-item">
-                        <div class="footer-item__logo">
-                            <a href="{% url 'index' %}">
-                                <img src="{% static 'assets/images/logo/white-logo.png' %}" alt="">
-                            </a>
-                        </div>
-                        <p class="footer-item__desc">Lorem consultancy elitsed do eiusmod tempor inci didunt ut labore dolore magna aliqua sed do eiusmod.</p>
-                        <div class="footer-item__social">
-                            <ul class="social-list">
-                                <li class="social-list__item">
-                                    <a href="https://www.facebook.com" class="social-list__link flx-center"><i class="fab fa-facebook-f"></i></a>
-                                </li>
-                                <li class="social-list__item">
-                                    <a href="https://www.twitter.com" class="social-list__link flx-center"><i class="fab fa-twitter"></i></a>
-                                </li>
-                                <li class="social-list__item">
-                                    <a href="https://www.linkedin.com" class="social-list__link flx-center"><i class="fab fa-linkedin-in"></i></a>
-                                </li>
-                                <li class="social-list__item">
-                                    <a href="https://www.pinterest.com" class="social-list__link flx-center"><i class="fab fa-pinterest-p"></i></a>
-                                </li>
-                                <li class="social-list__item">
-                                    <a href="https://www.youtube.com" class="social-list__link flx-center"><i class="fab fa-youtube"></i></a>
-                                </li>
-                            </ul>
-                        </div>
+<!-- ==================== Footer Start Here ==================== -->
+<footer class="footer ">
+    <img src="assets/images/shapes/pattern.png" alt="" class="bg-pattern">
+    <img src="assets/images/shapes/element1.png" alt="" class="element one">
+    <img src="assets/images/shapes/element2.png" alt="" class="element two">
+    <img src="assets/images/gradients/footer-gradient.png" alt="" class="bg--gradient">
+
+    <div class="container container-two">
+        <div class="row gy-5">
+            <div class="col-xl-3 col-sm-6">
+                <div class="footer-item">
+                    <div class="footer-item__logo">
+                        <a href="index.html"> <img src="assets/images/logo/white-logo.png" alt=""></a>
                     </div>
-                </div>
-
-                <div class="col-xl-2 col-sm-6 col-xs-6">
-                    <div class="footer-item">
-                        <h5 class="footer-item__title">Useful Link</h5>
-                        <ul class="footer-menu">
-                            <li class="footer-menu__item">
-                                <a href="{% url 'index' %}" class="footer-menu__link">Products</a>
-                            </li>
-                            <li class="footer-menu__item">
-                                <a href="#" class="footer-menu__link">Profile</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-xl-1 d-xl-block d-none"></div>
-
-                <div class="col-xl-2 col-sm-6 col-xs-6">
-                    <div class="footer-item">
-                        <h5 class="footer-item__title">Quick Links</h5>
-                        <ul class="footer-menu">
-                            <li class="footer-menu__item">
-                                <a href="{% url 'login' %}" class="footer-menu__link">Login</a>
-                            </li>
-                            <li class="footer-menu__item">
-                                <a href="{% url 'register' %}" class="footer-menu__link">Register</a>
-                            </li>
-                            <li class="footer-menu__item">
-                                <a href="{% url 'index' %}" class="footer-menu__link">Home</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-xl-4 col-sm-6">
-                    <div class="footer-item">
-                        <h5 class="footer-item__title">Subscribe</h5>
-                        <p class="footer-item__desc">Subscribe our newsletter to get updated the latest news</p>
-                        <div class="mt-4 subscribe-box d-flex align-items-center flex-column gap-2">
-                            <input type="text" class="form-control common-input pill text-white" placeholder="Enter Mail">
-                            <button type="button" class="btn btn-main btn-lg w-100 pill">Subscribe Now</button>
-                        </div>
+                    <p class="footer-item__desc">Lorem consultancy elitsed do eiusmod tempor inci didunt ut labore dolore magna aliqua sed do eiusmod.</p>
+                    <div class="footer-item__social">
+                        <ul class="social-list">
+    <li class="social-list__item">
+        <a href="https://www.facebook.com" class="social-list__link flx-center"><i class="fab fa-facebook-f"></i></a>
+    </li>
+    <li class="social-list__item">
+        <a href="https://www.twitter.com" class="social-list__link flx-center"> <i class="fab fa-twitter"></i></a>
+    </li>
+    <li class="social-list__item">
+        <a href="https://www.linkedin.com" class="social-list__link flx-center"> <i class="fab fa-linkedin-in"></i></a>
+    </li>
+    <li class="social-list__item">
+        <a href="https://www.pinterest.com" class="social-list__link flx-center"> <i class="fab fa-pinterest-p"></i></a>
+    </li>
+    <li class="social-list__item">
+        <a href="https://www.pinterest.com" class="social-list__link flx-center"> <i class="fab fa-youtube"></i></a>
+    </li>
+</ul>
                     </div>
                 </div>
             </div>
-        </div>
-    </footer>
-
-    <!-- Bottom Footer -->
-    <div class="bottom-footer">
-        <div class="container container-two">
-            <div class="bottom-footer__inner flx-between gap-3">
-                <p class="bottom-footer__text font-14">Copyright &copy; 2024 DPmarket, All rights reserved.</p>
-                <div class="footer-links">
-                    <a href="#" class="footer-link font-14">Terms of service</a>
-                    <a href="#" class="footer-link font-14">Privacy Policy</a>
-                    <a href="#" class="footer-link font-14">Cookies</a>
+            <div class="col-xl-2 col-sm-6 col-xs-6">
+                <div class="footer-item">
+                    <h5 class="footer-item__title">Useful Link</h5>
+                    <ul class="footer-menu">
+                        <li class="footer-menu__item"><a href="all-product.html" class="footer-menu__link">Product </a></li>
+                        <li class="footer-menu__item"><a href="product-details.html" class="footer-menu__link">Product Details</a></li>
+                        <li class="footer-menu__item"><a href="profile.html" class="footer-menu__link">Profile </a></li>
+                        <li class="footer-menu__item"><a href="cart.html" class="footer-menu__link">Shopping Cart</a></li>
+                        <li class="footer-menu__item"><a href="dashboard.html" class="footer-menu__link">Dashboard</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-1 d-xl-block d-none"></div>
+            <div class="col-xl-2 col-sm-6 col-xs-6">
+                <div class="footer-item">
+                    <h5 class="footer-item__title">Quick Links</h5>
+                    <ul class="footer-menu">
+                        <li class="footer-menu__item"><a href="dashboard.html" class="footer-menu__link">Dashboard </a></li>
+                        <li class="footer-menu__item"><a href="login.html" class="footer-menu__link">Login </a></li>
+                        <li class="footer-menu__item"><a href="register.html" class="footer-menu__link">Register</a></li>
+                        <li class="footer-menu__item"><a href="blog.html" class="footer-menu__link">Blog </a></li>
+                        <li class="footer-menu__item"><a href="blog-details.html" class="footer-menu__link">Blog Details</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-4 col-sm-6">
+                <div class="footer-item">
+                    <h5 class="footer-item__title">Subscribe</h5>
+                    <p class="footer-item__desc">Subscribe our newsletter to get updated the latest news</p>
+                    <form action="#" class="mt-4 subscribe-box d-flex align-items-center flex-column gap-2">
+                        <input type="text" class="form-control common-input pill text-white" placeholder="Enter Mail">
+                        <button type="submit" class="btn btn-main btn-lg w-100 pill">Subscribe Now</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    <!-- ==================== Footer End ==================== -->
+</footer>
+
+<!-- bottom Footer -->
+<div class="bottom-footer">
+    <div class="container container-two">
+        <div class="bottom-footer__inner flx-between gap-3">
+            <p class="bottom-footer__text font-14"> Copyright &copy; 2024 DPmarket, All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#" class="footer-link font-14">Terms of service</a>
+                <a href="#" class="footer-link font-14">Privacy Policy</a>
+                <a href="contact.html" class="footer-link font-14">cookies</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ==================== Footer End Here ==================== -->
 
 </main>
 
-<script src="{% static 'assets/js/jquery-3.7.1.min.js' %}"></script>
-<script src="{% static 'assets/js/boostrap.bundle.min.js' %}"></script>
-<script src="{% static 'assets/js/countdown.js' %}"></script>
-<script src="{% static 'assets/js/counterup.min.js' %}"></script>
-<script src="{% static 'assets/js/slick.min.js' %}"></script>
-<script src="{% static 'assets/js/jquery.magnific-popup.js' %}"></script>
-<script src="{% static 'assets/js/apexchart.js' %}"></script>
-<script src="{% static 'assets/js/main.js' %}"></script>
+    <!-- Jquery js -->
+    <script src="{% static 'assets/js/jquery-3.7.1.min.js' %}"></script>
+    <!-- Bootstrap Bundle Js -->
+    <script src="{% static 'assets/js/boostrap.bundle.min.js' %}"></script>
+    <!-- CountDown -->
+    <script src="{% static 'assets/js/countdown.js' %}"></script>
+    <!-- counter up -->
+    <script src="{% static 'assets/js/counterup.min.js' %}"></script>
+    <!-- Slick js -->
+    <script src="{% static 'assets/js/slick.min.js' %}"></script>
+    <!-- magnific popup -->
+    <script src="{% static 'assets/js/jquery.magnific-popup.js' %}"></script>
+    <!-- apex chart -->
+    <script src="{% static 'assets/js/apexchart.js' %}"></script>
 
-</body>
+    <!-- main js -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+
+    </body>
 </html>

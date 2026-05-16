@@ -89,19 +89,18 @@
         <div class="popular-slider arrow-style-two row gy-4">
             {% for i in categories %}
             <div class="col-lg-2">
-    <a href="all-product.html" class="popular-item w-100">
-        <span class="popular-item__icon">
-            <img src="{{ i.logo.url }}" alt="logo">
-        </span>
-        <h6 class="popular-item__title font-18">{{ i.name }}</h6>
-        <span class="popular-item__qty text-body">15,296</span>
-    </a>
-</div>
-
+                <a href="{% url 'category_filter' i.id %}" class="popular-item w-100">
+                    <span class="popular-item__icon">
+                        <img src="{{ i.logo.url }}" alt="{{ i.name }}">
+                    </span>
+                    <h6 class="popular-item__title font-18">{{ i.name }}</h6>
+                    <span class="popular-item__qty text-body">15,296</span>
+                </a>
+            </div>
             {% endfor %}
         </div>
         <div class="popular__button text-center">
-            <a href="all-product.html" class="font-18 fw-600 text-heading hover-text-main text-decoration-underline font-heading">Explore More</a>
+            <a href="{% url 'index' %}" class="font-18 fw-600 text-heading hover-text-main text-decoration-underline font-heading">Explore More</a>
         </div>
     </div>
 </section>

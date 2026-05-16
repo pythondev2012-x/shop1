@@ -1,0 +1,679 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+/* ===== Profile Header ===== */
+.profile-hero {
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    padding: 60px 0 80px;
+    position: relative;
+}
+.profile-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: var(--body-bg, #f5f5f5);
+    clip-path: ellipse(55% 100% at 50% 100%);
+}
+.profile-avatar-wrap {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+    flex-shrink: 0;
+}
+.profile-avatar-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.profile-name {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+.profile-meta {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.9rem;
+}
+.profile-stat {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 12px;
+    padding: 14px 28px;
+    text-align: center;
+    color: #fff;
+}
+.profile-stat__label {
+    font-size: 12px;
+    opacity: 0.8;
+    display: block;
+    margin-bottom: 4px;
+}
+.profile-stat__value {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* ===== Tabs ===== */
+.profile-tabs-wrap {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    padding: 6px;
+    display: inline-flex;
+    gap: 4px;
+    margin-top: 32px;
+}
+.profile-tabs-wrap .nav-link {
+    border-radius: 10px;
+    padding: 8px 28px;
+    font-weight: 600;
+    color: #555;
+    border: none;
+    background: transparent;
+    transition: all 0.2s;
+}
+.profile-tabs-wrap .nav-link.active {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(106,17,203,0.35);
+}
+
+/* ===== Main content area ===== */
+.profile-body {
+    padding: 40px 0 60px;
+    background: #f5f6fa;
+    min-height: 500px;
+}
+
+/* ===== Sidebar ===== */
+.setting-sidebar {
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    position: sticky;
+    top: 20px;
+}
+.setting-sidebar__title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.setting-sidebar-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.setting-sidebar-list__link {
+    display: block;
+    padding: 10px 14px;
+    border-radius: 10px;
+    color: #555;
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+.setting-sidebar-list__link:hover,
+.setting-sidebar-list__link.active {
+    background: linear-gradient(135deg, #6a11cb15, #2575fc15);
+    color: #6a11cb;
+    font-weight: 600;
+}
+
+/* ===== Cards ===== */
+.profile-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    margin-bottom: 24px;
+    overflow: hidden;
+    border: none !important;
+}
+.profile-card__header {
+    padding: 20px 28px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.profile-card__header h6 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #222;
+}
+.profile-card__header .header-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 14px;
+}
+.profile-card__body {
+    padding: 28px;
+}
+
+/* ===== Form inputs ===== */
+.form-group-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 8px;
+    display: block;
+}
+.profile-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #eef0f5;
+    border-radius: 12px;
+    font-size: 14px;
+    color: #333;
+    background: #f8f9fc;
+    transition: all 0.2s;
+    outline: none;
+}
+.profile-input:focus {
+    border-color: #6a11cb;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(106,17,203,0.08);
+}
+.profile-input[type="file"] {
+    padding: 10px 16px;
+    cursor: pointer;
+}
+textarea.profile-input {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* ===== Save button ===== */
+.btn-save {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 32px;
+    font-weight: 700;
+    font-size: 15px;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 15px rgba(106,17,203,0.3);
+}
+.btn-save:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(106,17,203,0.4);
+}
+
+/* ===== Social input ===== */
+.social-input-wrap {
+    position: relative;
+}
+.social-input-wrap .social-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 15px;
+    color: #6a11cb;
+}
+.social-input-wrap .profile-input {
+    padding-left: 42px;
+}
+
+/* ===== Statement ===== */
+.statement-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    padding: 24px;
+    border: none !important;
+}
+.statement-card__title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #222;
+}
+.stat-box {
+    background: #f8f9fc;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+}
+.stat-box__label {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 6px;
+    display: block;
+}
+.stat-box__value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #222;
+}
+.table-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    overflow: hidden;
+}
+.table-card table thead th {
+    background: #f8f9fc;
+    font-size: 13px;
+    font-weight: 700;
+    color: #555;
+    padding: 14px 16px;
+    border: none;
+}
+.table-card table tbody td {
+    font-size: 14px;
+    color: #444;
+    padding: 14px 16px;
+    border-bottom: 1px solid #f5f5f5;
+    vertical-align: middle;
+}
+.table-card table tbody tr:last-child td {
+    border-bottom: none;
+}
+</style>
+
+<!-- ===== Profile Hero ===== -->
+<section class="profile-hero">
+    <div class="container">
+        <div class="d-flex flex-column flex-md-row align-items-center align-items-md-end gap-4">
+
+            <!-- Avatar -->
+            <div class="profile-avatar-wrap">
+                {% if user.photo %}
+                    <img src="{{ user.photo.url }}" alt="{{ user.username }}">
+                {% else %}
+                    <img src="{% static 'assets/images/thumbs/author-profile.png' %}" alt="{{ user.username }}">
+                {% endif %}
+            </div>
+
+            <!-- Name & meta -->
+            <div class="flex-grow-1">
+                <h4 class="profile-name">{{ user.username }}</h4>
+                <p class="profile-meta mb-0">{{ user.first_name }} {{ user.last_name }}</p>
+            </div>
+
+            <!-- Stats -->
+            <div class="d-flex gap-3">
+                <div class="profile-stat">
+                    <span class="profile-stat__label">Phone</span>
+                    <span class="profile-stat__value">{{ user.phone|default:"—" }}</span>
+                </div>
+                <div class="profile-stat">
+                    <span class="profile-stat__label">Address</span>
+                    <span class="profile-stat__value">{{ user.address|default:"—" }}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="profile-tabs-wrap">
+            <ul class="nav nav-pills mb-0" id="pills-tab" role="tablist" style="gap:0">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="pills-Settingss-tab"
+                        data-bs-toggle="pill" data-bs-target="#pills-Settingss"
+                        type="button" role="tab">
+                        <i class="las la-cog me-1"></i> Settings
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="pills-statement-tab"
+                        data-bs-toggle="pill" data-bs-target="#pills-statement"
+                        type="button" role="tab">
+                        <i class="las la-chart-bar me-1"></i> Statement
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ===== Tab Content ===== -->
+<div class="profile-body">
+    <div class="container">
+        <div class="tab-content" id="pills-tabContent">
+
+            <!-- ===== Settings Tab ===== -->
+            <div class="tab-pane fade" id="pills-Settingss" role="tabpanel" tabindex="0">
+                <div class="row gy-4">
+
+                    <!-- Sidebar -->
+                    <div class="col-lg-3">
+                        <div class="setting-sidebar">
+                            <p class="setting-sidebar__title">Your Details</p>
+                            <ul class="setting-sidebar-list">
+                                <li class="setting-sidebar-list__item">
+                                    <a href="#personalInfo" class="setting-sidebar-list__link active">
+                                        <i class="las la-user me-2"></i>Personal Information
+                                    </a>
+                                </li>
+                                <li class="setting-sidebar-list__item">
+                                    <a href="#profile" class="setting-sidebar-list__link">
+                                        <i class="las la-id-card me-2"></i>Profile
+                                    </a>
+                                </li>
+                                <li class="setting-sidebar-list__item">
+                                    <a href="#paymentSystem" class="setting-sidebar-list__link">
+                                        <i class="las la-credit-card me-2"></i>Setup Payment
+                                    </a>
+                                </li>
+                                <li class="setting-sidebar-list__item">
+                                    <a href="#emailSetting" class="setting-sidebar-list__link">
+                                        <i class="las la-envelope me-2"></i>Email Setting
+                                    </a>
+                                </li>
+                                <li class="setting-sidebar-list__item">
+                                    <a href="#socialNetwork" class="setting-sidebar-list__link">
+                                        <i class="las la-share-alt me-2"></i>Social Networks
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="col-lg-9">
+
+                        <!-- Personal Information -->
+                        <div class="profile-card" id="personalInfo">
+                            <div class="profile-card__header">
+                                <div class="header-icon"><i class="las la-user"></i></div>
+                                <h6>Personal Information</h6>
+                            </div>
+                            <div class="profile-card__body">
+                                <form method="post" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="row gy-3">
+                                        <div class="col-sm-6">
+                                            <label class="form-group-label">First Name</label>
+                                            <input type="text" name="first_name" value="{{ user.first_name }}" class="profile-input" placeholder="First name">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-group-label">Last Name</label>
+                                            <input type="text" name="last_name" value="{{ user.last_name }}" class="profile-input" placeholder="Last name">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-group-label">Phone</label>
+                                            <input type="text" name="phone" value="{{ user.phone }}" class="profile-input" placeholder="Phone number">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-group-label">Address</label>
+                                            <input type="text" name="address" value="{{ user.address }}" class="profile-input" placeholder="Address">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-group-label">Username</label>
+                                            <input type="text" name="username" value="{{ user.username }}" class="profile-input" placeholder="Username">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <label class="form-group-label">Profile Photo</label>
+                                            <input type="file" name="photo" class="profile-input">
+                                        </div>
+                                        <div class="col-12 mt-2">
+                                            <button type="submit" class="btn-save">
+                                                <i class="las la-save me-2"></i>Save Information
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Profile -->
+                        <div class="profile-card" id="profile">
+                            <div class="profile-card__header">
+                                <div class="header-icon"><i class="las la-id-card"></i></div>
+                                <h6>Profile Settings</h6>
+                            </div>
+                            <div class="profile-card__body">
+                                <div class="row gy-3">
+                                    <div class="col-sm-6">
+                                        <label class="form-group-label">Upload Avatar</label>
+                                        <input type="file" class="profile-input">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="form-group-label">Upload Cover</label>
+                                        <input type="file" class="profile-input">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="form-group-label">Profile Heading</label>
+                                        <input type="text" class="profile-input" placeholder="e.g. Senior Developer">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="form-group-label">Show Country</label>
+                                        <div class="d-flex align-items-center gap-4 mt-2">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="showCountry" id="yes">
+                                                <label class="form-check-label" for="yes">Yes</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="showCountry" id="no">
+                                                <label class="form-check-label" for="no">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-group-label">About Profile</label>
+                                        <textarea class="profile-input" placeholder="Write something about yourself..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Social Networks -->
+                        <div class="profile-card" id="socialNetwork">
+                            <div class="profile-card__header">
+                                <div class="header-icon"><i class="las la-share-alt"></i></div>
+                                <h6>Social Networks</h6>
+                            </div>
+                            <div class="profile-card__body">
+                                <div class="row gy-3">
+                                    <div class="col-sm-6">
+                                        <label class="form-group-label">Facebook</label>
+                                        <div class="social-input-wrap">
+                                            <span class="social-icon"><i class="fab fa-facebook-f"></i></span>
+                                            <input type="url" class="profile-input" placeholder="Facebook profile URL">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="form-group-label">LinkedIn</label>
+                                        <div class="social-input-wrap">
+                                            <span class="social-icon"><i class="fab fa-linkedin-in"></i></span>
+                                            <input type="url" class="profile-input" placeholder="LinkedIn profile URL">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="form-group-label">Behance</label>
+                                        <div class="social-input-wrap">
+                                            <span class="social-icon"><i class="fab fa-behance"></i></span>
+                                            <input type="url" class="profile-input" placeholder="Behance profile URL">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label class="form-group-label">Dribbble</label>
+                                        <div class="social-input-wrap">
+                                            <span class="social-icon"><i class="fab fa-dribbble"></i></span>
+                                            <input type="url" class="profile-input" placeholder="Dribbble profile URL">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== Statement Tab ===== -->
+            <div class="tab-pane fade show active" id="pills-statement" role="tabpanel" tabindex="0">
+                <div class="row gy-4">
+
+                    <!-- Total Earning -->
+                    <div class="col-lg-6">
+                        <div class="statement-card">
+                            <h6 class="statement-card__title">
+                                <i class="las la-coins me-2" style="color:#6a11cb"></i>Total Earning
+                            </h6>
+                            <div class="row gy-3">
+                                <div class="col-6">
+                                    <div class="stat-box">
+                                        <span class="stat-box__label">My Funds</span>
+                                        <span class="stat-box__value">$0.00</span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="stat-box">
+                                        <span class="stat-box__label">Earnings</span>
+                                        <span class="stat-box__value">$0.00</span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="stat-box">
+                                        <span class="stat-box__label">Tax Withheld</span>
+                                        <span class="stat-box__value">$0.00</span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="stat-box">
+                                        <span class="stat-box__label">Fees</span>
+                                        <span class="stat-box__value">$0.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Monthly Earning -->
+                    <div class="col-lg-6">
+                        <div class="statement-card">
+                            <h6 class="statement-card__title">
+                                <i class="las la-calendar me-2" style="color:#2575fc"></i>Monthly Earnings
+                            </h6>
+                            <div class="row gy-3">
+                                <div class="col-6">
+                                    <div class="stat-box">
+                                        <span class="stat-box__label">My Funds</span>
+                                        <span class="stat-box__value">$0.00</span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="stat-box">
+                                        <span class="stat-box__label">Earnings</span>
+                                        <span class="stat-box__value">$0.00</span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="stat-box">
+                                        <span class="stat-box__label">Tax Withheld</span>
+                                        <span class="stat-box__value">$0.00</span>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="stat-box">
+                                        <span class="stat-box__label">Fees</span>
+                                        <span class="stat-box__value">$0.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Transactions Table -->
+                    <div class="col-12">
+                        <div class="table-card">
+                            <div class="p-4 border-bottom">
+                                <h6 class="mb-0 fw-700">
+                                    <i class="las la-receipt me-2" style="color:#6a11cb"></i>Transaction History
+                                </h6>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Order ID</th>
+                                            <th>Type</th>
+                                            <th>Price</th>
+                                            <th>Details</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for i in "123456789" %}
+                                        <tr>
+                                            <td>2022-12-31 03:36 AM</td>
+                                            <td><span style="color:#6a11cb;font-weight:600">#DR54745425478</span></td>
+                                            <td>WordPress</td>
+                                            <td><strong>$59.00</strong></td>
+                                            <td>
+                                                <a href="#" class="btn btn-sm" style="background:linear-gradient(135deg,#6a11cb,#2575fc);color:#fff;border-radius:8px;padding:6px 14px;">
+                                                    <i class="far fa-eye"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="p-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
+                                <div class="d-flex align-items-center gap-2">
+                                    <select class="profile-input" style="width:auto;padding:8px 12px">
+                                        {% for n in "12345678910" %}
+                                        <option>{{ forloop.counter }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <span class="text-muted" style="font-size:13px">Showing 1 - 10 of 100</span>
+                                </div>
+                                <nav>
+                                    <ul class="pagination mb-0" style="gap:4px">
+                                        <li class="page-item"><a class="page-link" href="#" style="border-radius:8px">1</a></li>
+                                        <li class="page-item active"><a class="page-link" href="#" style="border-radius:8px;background:linear-gradient(135deg,#6a11cb,#2575fc);border:none">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#" style="border-radius:8px">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#" style="border-radius:8px">4</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link d-flex align-items-center gap-1" href="#" style="border-radius:8px">
+                                                Next <i class="las la-arrow-right"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
