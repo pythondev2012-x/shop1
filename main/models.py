@@ -57,3 +57,70 @@ class Banner(models.Model):
     image = models.ImageField(upload_to='banners')
     description = models.TextField()
     product_1 = models.ForeignKey(Product, on_delete=models.SET_NULL , null=True, blank=True)
+
+
+
+CART_STATUS = (
+    (1, 'No Faol'),
+    (2, "Yig'ilmoqda"),
+    (3, "Yo'lda"),
+    (4, "Yetkazilgan"),
+    (5, "Qaytarilgan")
+)
+
+class Cart(Code):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    status = models.IntegerField(choices=CART_STATUS, default=1)
+    date = models.DateTimeField(auto_now_add=True)
+
+
+    @property
+    def cart_total_price(self):
+        n = 0
+        for i in CartProduct.objects.filter(cart=self):
+            n += i.total_price
+        return n
+
+
+    @property
+    def discount_total_price(self):
+        n = 0
+        for i in CartProduct.objects.filter(cart=self):
+            n += i.discount_price
+        return n
+
+    @property
+    def count_product(self):
+        n = 0
+        for i in CartProduct.objects.filter(cart=self):
+            n += 1
+        return n
+
+    def __str__(self):
+        return f'{self.user} - {self.status}'
+
+
+class CartProduct(Code):
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    count = models.IntegerField()
+
+    @property
+    def total_price(self):
+        if self.product.discount_price:
+            return self.product.discount_price * self.count
+        return self.product.price * self.count
+
+    @property
+    def discount_price(self):
+        if self.product.discount_price:
+            return (self.product.price - self.product.discount_price) * self.count
+        return 0
+
+class WishList(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.user} - {self.product}'

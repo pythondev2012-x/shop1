@@ -2,7 +2,7 @@
 
 {% block content %}
 
-
+{% load static %}
 
 
 
@@ -314,10 +314,52 @@
             <h6 class="product-card__price mb-0 font-14 fw-500">${{product.discount_price}}</h6>
         </div>
     </div>
-    <button type="button" class="btn btn-main d-flex w-100 justify-content-center align-items-center gap-2 pill px-sm-5 mt-32">
+
+
+<div style="display: flex; align-items: center; gap: 12px; margin-top: 16px;">
+    <button type="button" class="btn btn-main flex-grow-1 d-flex justify-content-center align-items-center gap-2 pill px-sm-5">
         <img src="assets/images/icons/add-to-cart.svg" alt="">
         Add To Cart
     </button>
+
+    {% if product.id in wishlist_ids %}
+    <a href="{% url 'delete_wishlist' product.code %}" class="wishlist-btn active">
+        <i class="fa fa-heart"></i>
+    </a>
+    {% else %}
+    <a href="{% url 'add_wishlist' product.code %}" class="wishlist-btn">
+        <i class="fa fa-heart"></i>
+    </a>
+    {% endif %}
+</div>
+<style>
+      .wishlist-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid #000000;
+      background: #e1e1e1;
+      color: #ffffff;
+      font-size: 18px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      margin-left: 12px;
+      vertical-align: middle;
+    }
+    .wishlist-btn:hover {
+      border-color: #000000;
+      color: #f43f5e;
+      transform: scale(1.08);
+    }
+    .wishlist-btn.active {
+      border-color: #f43f5e;
+      color: #f43f5e;
+      background: #fff0f3;
+    }
+</style>
 
 
     <!-- Meta Attribute List Start -->
