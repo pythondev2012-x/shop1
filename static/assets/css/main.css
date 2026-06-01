@@ -4768,6 +4768,117 @@ input[type=number] {
 }
 
 /* Statistics End */
+
+/* Banner Product Cards Start */
+.latest-products-wrapper {
+    position: relative;
+}
+
+.banner-product-card {
+    position: absolute;
+    width: 140px;
+    border-radius: 12px;
+    background-color: hsl(var(--white));
+    overflow: hidden;
+    box-shadow: 0px 20px 30px 0px rgba(94, 53, 242, 0.3);
+}
+
+.banner-product-card:nth-child(1) {
+    top: 42%;
+    left: 33%;
+    animation: upDown 20s linear infinite;
+}
+
+.banner-product-card:nth-child(2) {
+    right: 0px;
+    top: 60px;
+    box-shadow: -10px 20px 30px 0px rgba(189, 190, 204, 0.5);
+}
+
+.banner-product-card .product-card__thumb {
+    margin: 4px;
+    border-radius: 8px;
+    max-height: 80px;
+}
+
+.banner-product-card .product-card__content {
+    padding: 8px 10px;
+    padding-top: 6px;
+}
+
+.banner-product-card .product-card__title {
+    margin-bottom: 4px;
+    font-size: 0.75rem;
+}
+
+.banner-product-card .product-card__title .link {
+    -webkit-line-clamp: 1;
+}
+
+.banner-product-card .product-card__info {
+    margin-bottom: 4px;
+}
+
+.banner-product-card .product-card__price {
+    font-size: 0.875rem;
+}
+
+.banner-product-card .product-card__prevPrice {
+    font-size: 0.75rem;
+}
+
+.banner-product-card .product-card__bottom {
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid hsl(var(--gray-five));
+}
+
+.banner-product-card .product-card__sales {
+    font-size: 0.7rem;
+}
+
+.banner-product-card .star-rating__item {
+    font-size: 0.6rem;
+}
+
+.banner-product-card .star-rating__text {
+    font-size: 0.7rem;
+}
+
+.banner-product-card .btn-sm {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+}
+
+.banner-product-card .product-card__wishlist {
+    width: 24px;
+    height: 24px;
+    font-size: 0.7rem;
+    right: 6px;
+    top: 6px;
+}
+
+@media screen and (max-width: 991px) {
+    .banner-product-card {
+        position: relative;
+        width: 100%;
+        max-width: 200px;
+        margin-bottom: 10px;
+    }
+    
+    .banner-product-card:nth-child(1),
+    .banner-product-card:nth-child(2) {
+        top: auto;
+        left: auto;
+        right: auto;
+        animation: none;
+    }
+    
+    .banner-product-card .product-card__thumb {
+        max-height: 120px;
+    }
+}
+/* Banner Product Cards End */
 @keyframes upDown {
     0%, 100% {
         transform: translateY(0px) scale(1);

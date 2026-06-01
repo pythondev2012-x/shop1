@@ -18,10 +18,12 @@ def index(request):
     categories = Category.objects.all()[:10]
     top_categories = Category.objects.filter(is_active=True)[:7]
     products = Product.objects.all().order_by('-created_at')[:12]
+    latest_products = Product.objects.all().order_by('-created_at')[:2]
     return render(request, 'front/index.html', {
         'categories': categories,
         'top_categories': top_categories,
         'products': products,
+        'latest_products': latest_products,
         'wishlist_ids': _wishlist_ids_for_user(request.user),
     })
 
