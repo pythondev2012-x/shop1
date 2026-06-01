@@ -1,29 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Title -->
-    <title> Digital Market Place HTML Template</title>
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="assets/images/logo/favicon.png">
+{% extends 'base.html' %}
+{% load static %}
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <!-- Fontawesome -->
-    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-    <!-- Slick -->
-    <link rel="stylesheet" href="assets/css/slick.css">
-    <!-- magnific popup -->
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
-    <!-- line awesome -->
-    <link rel="stylesheet" href="assets/css/line-awesome.min.css">
-    <!-- Main css -->
-    <link rel="stylesheet" href="assets/css/main.css">
-
-</head>
-<body>
+{% block content %}
 
 <!--==================== Preloader Start ====================-->
  <div class="loader-mask">
@@ -71,220 +49,10 @@
             </li>
         </ul>
     </li>
-    <li class="nav-menu__item has-submenu">
-        <a href="javascript:void(0)" class="nav-menu__link">Products</a>
-         <ul class="nav-submenu">
-            <li class="nav-submenu__item">
-                <a href="all-product.html" class="nav-submenu__link"> All Products</a>
-            </li>
-            <li class="nav-submenu__item">
-                <a href="product-details.html" class="nav-submenu__link"> Product Details</a>
-            </li>
-        </ul>
-    </li>
-    <li class="nav-menu__item has-submenu">
-        <a href="javascript:void(0)" class="nav-menu__link">Pages</a>
-         <ul class="nav-submenu">
-            <li class="nav-submenu__item">
-                <a href="profile.html" class="nav-submenu__link"> Profile</a>
-            </li>
-            <li class="nav-submenu__item">
-                <a href="cart.html" class="nav-submenu__link"> Shopping Cart</a>
-            </li>
-            <li class="nav-submenu__item">
-                <a href="cart-personal.html" class="nav-submenu__link"> Mailing Address</a>
-            </li>
-            <li class="nav-submenu__item">
-                <a href="cart-payment.html" class="nav-submenu__link"> Payment Method</a>
-            </li>
-            <li class="nav-submenu__item">
-                <a href="cart-thank-you.html" class="nav-submenu__link"> Preview Order</a>
-            </li>
-            <li class="nav-submenu__item">
-                <a href="dashboard.html" class="nav-submenu__link"> Dashboard</a>
-            </li>
-        </ul>
-    </li>
-    <li class="nav-menu__item has-submenu">
-        <a href="javascript:void(0)" class="nav-menu__link">Blog</a>
-         <ul class="nav-submenu">
-            <li class="nav-submenu__item">
-                <a href="blog.html" class="nav-submenu__link"> Blog</a>
-            </li>
-            <li class="nav-submenu__item">
-                <a href="blog-details.html" class="nav-submenu__link"> Blog Details</a>
-            </li>
-            <li class="nav-submenu__item">
-                <a href="blog-details-sidebar.html" class="nav-submenu__link"> Blog Details Sidebar</a>
-            </li>
-        </ul>
-    </li>
-    <li class="nav-menu__item">
-        <a href="contact.html" class="nav-menu__link">Contact</a>
-    </li>
 </ul>
-            <div class="header-right__inner d-lg-none my-3 gap-1 d-flex flx-align">
-
-    <a href="register.html" class="btn btn-main pill">
-        <span class="icon-left icon">
-            <img src="assets/images/icons/user.svg" alt="">
-        </span>Create Account
-    </a>
-    <div class="language-select flx-align select-has-icon">
-        <img src="assets/images/icons/globe.svg" alt="" class="globe-icon">
-        <select class="select py-0 ps-2 border-0 fw-500">
-            <option value="1">Eng</option>
-            <option value="2">Bn</option>
-            <option value="3">Eur</option>
-            <option value="4">Urd</option>
-        </select>
-    </div>
-            </div>
         </div>
     </div>
 </div>
-<!-- ==================== Mobile Menu End Here ==================== -->
-
-<!-- ==================== Header Start Here ==================== -->
-<header class="header">
-    <div class="container container-full">
-        <nav class="header-inner flx-between">
-            <!-- Logo Start -->
-            <div class="logo">
-                <a href="index.html" class="link">
-                    <img src="assets/images/logo/logo.png" alt="Logo">
-                </a>
-            </div>
-            <!-- Logo End  -->
-
-            <!-- Menu Start  -->
-            <div class="header-menu d-lg-block d-none">
-
-<ul class="nav-menu flx-align ">
-    <li class="nav-menu__item has-submenu">
-        <a href="javascript:void(0)" class="nav-menu__link">Home</a>
-        <ul class="nav-submenu">
-            <li class="nav-submenu__item">
-                <a href="index.html" class="nav-submenu__link"> Home One</a>
-            </li>
-            <li class="nav-submenu__item">
-                <a href="index-two.html" class="nav-submenu__link"> Home Two</a>
-            </li>
-        </ul>
-    </li>
-    <li class="nav-menu__item has-submenu">
-        <a href="javascript:void(0)" class="nav-menu__link">Products</a>
-         <ul class="nav-submenu">
-            <li class="nav-submenu__item">
-                <a href="all-product.html" class="nav-submenu__link"> All Products</a>
-            </li>
-            <li class="nav-submenu__item">
-                <a href="product-details.html" class="nav-submenu__link"> Product Details</a>
-            </li>
-        </ul>
-    </li>
-    <li class="nav-menu__item has-submenu">
-        <a href="javascript:void(0)" class="nav-menu__link">Pages</a>
-         <ul class="nav-submenu">
-            <li class="nav-submenu__item">
-                <a href="profile.html" class="nav-submenu__link"> Profile</a>
-            </li>
-            <li class="nav-submenu__item">
-                <a href="cart.html" class="nav-submenu__link"> Shopping Cart</a>
-            </li>
-            <li class="nav-submenu__item">
-                <a href="cart-personal.html" class="nav-submenu__link"> Mailing Address</a>
-            </li>
-            <li class="nav-submenu__item">
-                <a href="cart-payment.html" class="nav-submenu__link"> Payment Method</a>
-            </li>
-            <li class="nav-submenu__item">
-                <a href="cart-thank-you.html" class="nav-submenu__link"> Preview Order</a>
-            </li>
-            <li class="nav-submenu__item">
-                <a href="dashboard.html" class="nav-submenu__link"> Dashboard</a>
-            </li>
-        </ul>
-    </li>
-    <li class="nav-menu__item has-submenu">
-        <a href="javascript:void(0)" class="nav-menu__link">Blog</a>
-         <ul class="nav-submenu">
-            <li class="nav-submenu__item">
-                <a href="blog.html" class="nav-submenu__link"> Blog</a>
-            </li>
-            <li class="nav-submenu__item">
-                <a href="blog-details.html" class="nav-submenu__link"> Blog Details</a>
-            </li>
-            <li class="nav-submenu__item">
-                <a href="blog-details-sidebar.html" class="nav-submenu__link"> Blog Details Sidebar</a>
-            </li>
-        </ul>
-    </li>
-    <li class="nav-menu__item">
-        <a href="contact.html" class="nav-menu__link">Contact</a>
-    </li>
-</ul>
-            </div>
-            <!-- Menu End  -->
-
-            <!-- Header Right start -->
-            <div class="header-right flx-align">
-    <a href="cart.html" class="header-right__button cart-btn position-relative">
-        <img src="assets/images/icons/cart.svg" alt="">
-        <span class="qty-badge font-12">0</span>
-    </a>
-    <div class="header-right__inner gap-3 flx-align d-lg-flex d-none">
-
-    <a href="register.html" class="btn btn-main pill">
-        <span class="icon-left icon">
-            <img src="assets/images/icons/user.svg" alt="">
-        </span>Create Account
-    </a>
-    <div class="language-select flx-align select-has-icon">
-        <img src="assets/images/icons/globe.svg" alt="" class="globe-icon">
-        <select class="select py-0 ps-2 border-0 fw-500">
-            <option value="1">Eng</option>
-            <option value="2">Bn</option>
-            <option value="3">Eur</option>
-            <option value="4">Urd</option>
-        </select>
-    </div>
-    </div>
-    <button type="button" class="toggle-mobileMenu d-lg-none"> <i class="las la-bars"></i> </button>
-</div>
-            <!-- Header Right End  -->
-        </nav>
-    </div>
-</header>
-<!-- ==================== Header End Here ==================== -->
-
-<!-- ======================== Breadcrumb one Section Start ===================== -->
-<section class="breadcrumb breadcrumb-one padding-y-60 section-bg position-relative z-index-1 overflow-hidden">
-
-    <img src="assets/images/gradients/breadcrumb-gradient-bg.png" alt="" class="bg--gradient">
-
-    <img src="assets/images/shapes/element-moon3.png" alt="" class="element one">
-    <img src="assets/images/shapes/element-moon1.png" alt="" class="element three">
-
-    <div class="container container-two">
-        <div class="row justify-content-center">
-            <div class="col-lg-7">
-                <div class="breadcrumb-one-content">
-                    <h3 class="breadcrumb-one-content__title text-center mb-3 text-capitalize">58,000+ products available for purchase</h3>
-                    <p class="breadcrumb-one-content__desc text-center text-black-three">Explore the best premium themes and plugins available for sale. Our unique collection is hand-curated by experts. Find and buy the perfect premium theme.</p>
-
-                    <form action="#" class="search-box">
-                        <input type="text" class="common-input common-input--lg pill shadow-sm" placeholder="Search theme, plugins &amp; more...">
-                        <button type="submit" class="btn btn-main btn-icon icon border-0">
-                            <img src="assets/images/icons/search.svg" alt="">
-                        </button>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <!-- ======================== Breadcrumb one Section End ===================== -->
 <!-- ======================== All Product Section Start ====================== -->
 <section class="all-product padding-y-120">
@@ -322,39 +90,39 @@
         <button class="list-grid__button sidebar-btn text-body d-lg-none d-flex"><i class="las la-bars"></i></button>
     </div>
 </div>
-                <form action="#" class="filter-form pb-4 ">
+                <form action="{% url 'all_products' %}" method="get" class="filter-form pb-4 ">
+    {% if request.GET.category %}
+        <input type="hidden" name="category" value="{{ request.GET.category }}">
+    {% endif %}
     <div class="row gy-3">
         <div class="col-sm-4 col-xs-6">
             <div class="flx-between gap-1">
-                <label for="tag" class="form-label font-16">Tag</label>
+                <label for="q" class="form-label font-16">Search</label>
                 <button type="reset" class="text-body font-14">Clear</button>
             </div>
             <div class="position-relative">
-                <input type="text" class="common-input border-gray-five common-input--withLeftIcon" id="tag" placeholder="Search By Tag...">
+                <input type="text" name="q" value="{{ request.GET.q }}" class="common-input border-gray-five common-input--withLeftIcon" id="q" placeholder="Search by name...">
                 <span class="input-icon input-icon--left"><img src="assets/images/icons/search-two.svg" alt=""></span>
             </div>
         </div>
         <div class="col-sm-4 col-xs-6">
             <div class="flx-between gap-1">
-                <label for="Price" class="form-label font-16">Price</label>
-                <button type="reset" class="text-body font-14">Clear</button>
+                <label for="min_price" class="form-label font-16">Min Price</label>
             </div>
             <div class="position-relative">
-                <input type="text" class="common-input border-gray-five" id="Price" placeholder="$7 - $29">
+                <input type="number" step="0.01" name="min_price" value="{{ request.GET.min_price }}" class="common-input border-gray-five" id="min_price" placeholder="Min price">
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4 col-xs-6">
             <div class="flx-between gap-1">
-                <label for="time" class="form-label font-16">Time Frame</label>
-                <button type="reset" class="text-body font-14">Clear</button>
+                <label for="max_price" class="form-label font-16">Max Price</label>
             </div>
-            <div class="position-relative select-has-icon">
-                <select id="time" class="common-input border-gray-five">
-                    <option value="1">Now</option>
-                    <option value="2">Yesterday</option>
-                    <option value="2">1 Month Ago</option>
-                </select>
+            <div class="position-relative">
+                <input type="number" step="0.01" name="max_price" value="{{ request.GET.max_price }}" class="common-input border-gray-five" id="max_price" placeholder="Max price">
             </div>
+        </div>
+        <div class="col-sm-4 col-xs-6">
+            <button type="submit" class="btn btn-primary mt-2">Search</button>
         </div>
     </div>
 </form>
@@ -368,65 +136,17 @@
         <div class="filter-sidebar__content">
             <ul class="filter-sidebar-list">
                 <li class="filter-sidebar-list__item">
-                    <a href="" class="filter-sidebar-list__text">
-                        All Categories <span class="qty">25489</span>
+                    <a href="{% url 'all_products' %}" class="filter-sidebar-list__text">
+                        All Categories <span class="qty">{{ products.count }}</span>
                     </a>
                 </li>
+                {% for cat in categories %}
                 <li class="filter-sidebar-list__item">
-                    <a href="" class="filter-sidebar-list__text">
-                        Site Template <span class="qty">12,501</span>
+                    <a href="?category={{ cat.id }}" class="filter-sidebar-list__text">
+                        {{ cat.name }} <span class="qty">{{ cat.product_set.count }}</span>
                     </a>
                 </li>
-                <li class="filter-sidebar-list__item">
-                    <a href="" class="filter-sidebar-list__text">
-                        WordPress <span class="qty">1258</span>
-                    </a>
-                </li>
-                <li class="filter-sidebar-list__item">
-                    <a href="" class="filter-sidebar-list__text">
-                        UI Template <span class="qty">1520</span>
-                    </a>
-                </li>
-                <li class="filter-sidebar-list__item">
-                    <a href="" class="filter-sidebar-list__text">
-                        Templates Kits <span class="qty">210</span>
-                    </a>
-                </li>
-                <li class="filter-sidebar-list__item">
-                    <a href="" class="filter-sidebar-list__text">
-                        eCommerce <span class="qty">158</span>
-                    </a>
-                </li>
-                <li class="filter-sidebar-list__item">
-                    <a href="" class="filter-sidebar-list__text">
-                        Marketing <span class="qty">178</span>
-                    </a>
-                </li>
-                <li class="filter-sidebar-list__item">
-                    <a href="" class="filter-sidebar-list__text">
-                        CMS Template <span class="qty">122</span>
-                    </a>
-                </li>
-                <li class="filter-sidebar-list__item">
-                    <a href="" class="filter-sidebar-list__text">
-                        Muse Themes <span class="qty">450</span>
-                    </a>
-                </li>
-                <li class="filter-sidebar-list__item">
-                    <a href="" class="filter-sidebar-list__text">
-                        Blogging <span class="qty">155</span>
-                    </a>
-                </li>
-                <li class="filter-sidebar-list__item">
-                    <a href="" class="filter-sidebar-list__text">
-                        Courses <span class="qty">125</span>
-                    </a>
-                </li>
-                <li class="filter-sidebar-list__item">
-                    <a href="" class="filter-sidebar-list__text">
-                        Forums <span class="qty">35</span>
-                    </a>
-                </li>
+                {% endfor %}
             </ul>
         </div>
     </div>
@@ -550,31 +270,40 @@
                 <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-product" role="tabpanel" aria-labelledby="pills-product-tab" tabindex="0">
                         <div class="row gy-4 list-grid-wrapper">
+                        {% for product in products %}
     <div class="col-xl-4 col-sm-6">
         <div class="product-card section-bg">
     <div class="product-card__thumb d-flex">
-        <a href="product-details.html" class="link w-100">
-            <img src="assets/images/thumbs/product-img1.png" alt="" class="cover-img">
+        <a href="{% url 'product_detail' product.code %}" class="link w-100">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="cover-img">
         </a>
-        <button type="button" class="product-card__wishlist"><i class="fas fa-heart"></i></button>
+        <form method="post" action="{% url 'add_wishlist' product.code %}">{% csrf_token %}
+            <button type="submit" class="product-card__wishlist">
+                {% if product.id in wishlist_ids %}
+                    <i class="fas fa-heart text-danger"></i>
+                {% else %}
+                    <i class="far fa-heart"></i>
+                {% endif %}
+            </button>
+        </form>
     </div>
     <div class="product-card__content">
         <h6 class="product-card__title">
-            <a href="product-details.html" class="link">SaaS dashboard digital products Title here</a>
+            <a href="{% url 'product_detail' product.code %}" class="link">{{ product.name }}</a>
         </h6>
         <div class="product-card__info flx-between gap-2">
             <span class="product-card__author">
                 by
-                <a href="profile.html" class="link hover-text-decoration-underline"> themepix</a>
+                <a href="{% url 'profile' %}" class="link hover-text-decoration-underline"> themepix</a>
             </span>
             <div class="flx-align gap-2">
-                <h6 class="product-card__price mb-0">$120</h6>
-                <span class="product-card__prevPrice text-decoration-line-through">$259</span>
+                <h6 class="product-card__price mb-0">${{ product.price }}</h6>
+                {% if product.discount_price %}<span class="product-card__prevPrice text-decoration-line-through">${{ product.discount_price }}</span>{% endif %}
             </div>
         </div>
         <div class="product-card__bottom flx-between gap-2">
             <div>
-                <span class="product-card__sales font-14 mb-2">1200 Sales</span>
+                <span class="product-card__sales font-14 mb-2">{{ product.count }} Sales</span>
                 <div class="d-flex align-items-center gap-1">
                     <ul class="star-rating">
                         <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
@@ -586,136 +315,14 @@
                     <span class="star-rating__text text-heading fw-500 font-14"> (16)</span>
                 </div>
             </div>
-            <a href="product-details.html" class="btn btn-outline-light btn-sm pill">Live Demo</a>
+            <a href="{% url 'product_detail' product.code %}" class="btn btn-outline-light btn-sm pill">Live Demo</a>
         </div>
     </div>
 </div>
     </div>
-    <div class="col-xl-4 col-sm-6">
-        <div class="product-card section-bg">
-    <div class="product-card__thumb d-flex">
-        <a href="product-details.html" class="link w-100">
-            <img src="assets/images/thumbs/product-img2.png" alt="" class="cover-img">
-        </a>
-        <button type="button" class="product-card__wishlist"><i class="fas fa-heart"></i></button>
-    </div>
-    <div class="product-card__content">
-        <h6 class="product-card__title">
-            <a href="product-details.html" class="link">SaaS dashboard digital products Title here</a>
-        </h6>
-        <div class="product-card__info flx-between gap-2">
-            <span class="product-card__author">
-                by
-                <a href="profile.html" class="link hover-text-decoration-underline"> themepix</a>
-            </span>
-            <div class="flx-align gap-2">
-                <h6 class="product-card__price mb-0">$129</h6>
-                <span class="product-card__prevPrice text-decoration-line-through">$236</span>
-            </div>
-        </div>
-        <div class="product-card__bottom flx-between gap-2">
-            <div>
-                <span class="product-card__sales font-14 mb-2">100 Sales</span>
-                <div class="d-flex align-items-center gap-1">
-                    <ul class="star-rating">
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                    </ul>
-                    <span class="star-rating__text text-heading fw-500 font-14"> (16)</span>
-                </div>
-            </div>
-            <a href="product-details.html" class="btn btn-outline-light btn-sm pill">Live Demo</a>
-        </div>
-    </div>
-</div>
-    </div>
-    <div class="col-xl-4 col-sm-6">
-        <div class="product-card section-bg">
-    <div class="product-card__thumb d-flex">
-        <a href="product-details.html" class="link w-100">
-            <img src="assets/images/thumbs/product-img3.png" alt="" class="cover-img">
-        </a>
-        <button type="button" class="product-card__wishlist"><i class="fas fa-heart"></i></button>
-    </div>
-    <div class="product-card__content">
-        <h6 class="product-card__title">
-            <a href="product-details.html" class="link">SaaS dashboard digital products Title here</a>
-        </h6>
-        <div class="product-card__info flx-between gap-2">
-            <span class="product-card__author">
-                by
-                <a href="profile.html" class="link hover-text-decoration-underline"> themepix</a>
-            </span>
-            <div class="flx-align gap-2">
-                <h6 class="product-card__price mb-0">$79</h6>
-                <span class="product-card__prevPrice text-decoration-line-through">$99</span>
-            </div>
-        </div>
-        <div class="product-card__bottom flx-between gap-2">
-            <div>
-                <span class="product-card__sales font-14 mb-2">900 Sales</span>
-                <div class="d-flex align-items-center gap-1">
-                    <ul class="star-rating">
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                    </ul>
-                    <span class="star-rating__text text-heading fw-500 font-14"> (16)</span>
-                </div>
-            </div>
-            <a href="product-details.html" class="btn btn-outline-light btn-sm pill">Live Demo</a>
-        </div>
-    </div>
-</div>
-    </div>
-    <div class="col-xl-4 col-sm-6">
-        <div class="product-card section-bg">
-    <div class="product-card__thumb d-flex">
-        <a href="product-details.html" class="link w-100">
-            <img src="assets/images/thumbs/product-img4.png" alt="" class="cover-img">
-        </a>
-        <button type="button" class="product-card__wishlist"><i class="fas fa-heart"></i></button>
-    </div>
-    <div class="product-card__content">
-        <h6 class="product-card__title">
-            <a href="product-details.html" class="link">SaaS dashboard digital products Title here</a>
-        </h6>
-        <div class="product-card__info flx-between gap-2">
-            <span class="product-card__author">
-                by
-                <a href="profile.html" class="link hover-text-decoration-underline"> themepix</a>
-            </span>
-            <div class="flx-align gap-2">
-                <h6 class="product-card__price mb-0">$59</h6>
-                <span class="product-card__prevPrice text-decoration-line-through">$129</span>
-            </div>
-        </div>
-        <div class="product-card__bottom flx-between gap-2">
-            <div>
-                <span class="product-card__sales font-14 mb-2">1225 Sales</span>
-                <div class="d-flex align-items-center gap-1">
-                    <ul class="star-rating">
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                    </ul>
-                    <span class="star-rating__text text-heading fw-500 font-14"> (16)</span>
-                </div>
-            </div>
-            <a href="product-details.html" class="btn btn-outline-light btn-sm pill">Live Demo</a>
-        </div>
-    </div>
-</div>
-    </div>
-    <div class="col-xl-4 col-sm-6">
-        <div class="product-card section-bg">
+                        {% empty %}
+                        <p>Mahsulot topilmadi.</p>
+                        {% endfor %}
     <div class="product-card__thumb d-flex">
         <a href="product-details.html" class="link w-100">
             <img src="assets/images/thumbs/product-img5.png" alt="" class="cover-img">
@@ -3990,5 +3597,4 @@
     <!-- main js -->
     <script src="assets/js/main.js"></script>
 
-    </body>
-</html>
+{% endblock %}
